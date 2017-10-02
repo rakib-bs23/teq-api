@@ -2,9 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TEQ API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Welcome to TEQ API Service</h1>
+<!-- Navbar starts -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">TEQ API</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <ul class="navbar-nav">
+            {% if not request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Login</a>
+            </li>
+            {% else %}
+            <li class="nav-item navbar-text">
+                Hello,
+                {% if request.user.first_name%}
+                {{ request.user.first_name }}
+                {% else %}
+                {{ request.user.username }}
+                {% endif %}
+
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="/api">API</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/api/docs">Docs</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/logout">Logout</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<!-- Navbar ends -->
+
+<!-- Jumbotron starts -->
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-3 text-center">TEQ API Service</h1>
+        <p class="lead text-center">API service for TEQ project</p>
+    </div>
+</div>
+<!-- Jumbotron ends -->
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
 </body>
 </html>
