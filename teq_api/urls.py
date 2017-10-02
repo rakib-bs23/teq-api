@@ -21,6 +21,7 @@ from api.routers import router
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^callback$', views.callback, name='callback'),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
     url(r'^api/docs/', include('rest_framework_docs.urls')),

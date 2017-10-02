@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import viewsets
 
@@ -13,6 +14,10 @@ def home(request):
     item_list = ObItem.objects.all()
     context = {'item_list': item_list}
     return render(request, 'api/index.html', context)
+
+
+def callback(request):
+    return HttpResponse('Login Successfully')
 
 
 class ItemsViewSet(viewsets.ModelViewSet):

@@ -1,0 +1,38 @@
+API Doc: https://auth0.com/docs/api/authentication?http#introduction
+SDK Doc: https://github.com/auth0/auth0-python
+Lock: https://auth0.com/docs/libraries/lock/v10
+https://auth0.com/docs/quickstart/webapp/python#initialize-flask-oauthlib
+https://auth0.com/docs/libraries/lock/v10/api#getuserinfo-
+
+Get a Token:
+
+curl --request POST --url 'https://rakibul.auth0.com/oauth/token' --header 'content-type: application/json' --data '{"grant_type":"authorization_code","client_id": "GfBTYTbJKMACVb1qGv6b7QHy1gCMxY3q","client_secret": "eYPVGqbGpMPOqivFyj-NdeZmb7LJ-oMSf8heXnKTxCxOCypB8JxcdQrzRJ_4lWRL","redirect_uri": "http://0.0.0.0:8000","code": "123456"}'
+
+User Registration:
+
+curl --request POST --url 'https://rakibul.auth0.com/dbconnections/signup' --header 'content-type: application/json' --data '{"client_id": "GfBTYTbJKMACVb1qGv6b7QHy1gCMxY3q","email": "demo_user@mailinator.com","password": "123456","connection":"customerdb","user_metadata": {"name": "Demo User","mobile": "+8801750016954","country": "Bangladesh"}}'
+
+Login:
+
+https://rakibul.auth0.com/authorize?response_type=token&client_id=GfBTYTbJKMACVb1qGv6b7QHy1gCMxY3q&connection=customerdb&redirect_uri=http://0.0.0.0:8000
+
+https://rakibul.auth0.com/authorize?response_type=code&client_id=GfBTYTbJKMACVb1qGv6b7QHy1gCMxY3q&connection=customerdb&redirect_uri=http://0.0.0.0:8000
+
+Logout:
+
+curl --request GET --url 'https://rakibul.auth0.com/v2/logout' --header 'content-type: application/json' --data '{"client_id":"GfBTYTbJKMACVb1qGv6b7QHy1gCMxY3q", "returnTo":"http://0.0.0.0:8000"}'
+
+Authorize Client:
+
+GET https://rakibul.auth0.com/authorize?
+  audience=rakibul.auth0.com&
+  scope=SCOPE&
+  response_type=code&
+  client_id=GfBTYTbJKMACVb1qGv6b7QHy1gCMxY3q&
+  redirect_uri=http://0.0.0.0:8000
+
+Login User:
+
+curl --request POST --url 'https://rakibul.auth0.com/oauth/ro' --header 'content-type: application/json' --data '{"client_id":"GfBTYTbJKMACVb1qGv6b7QHy1gCMxY3q", "username":"demo_user@mailinator.com", "password":"123456", "connection":"customerdb", "scope":"openid","grant_type":"password"}'
+
+
