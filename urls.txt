@@ -34,5 +34,3 @@ GET https://rakibul.auth0.com/authorize?
 Login User:
 
 curl --request POST --url 'https://rakibul.auth0.com/oauth/ro' --header 'content-type: application/json' --data '{"client_id":"GfBTYTbJKMACVb1qGv6b7QHy1gCMxY3q", "username":"demo_user@mailinator.com", "password":"123456", "connection":"customerdb", "scope":"openid","grant_type":"password"}'
-
-

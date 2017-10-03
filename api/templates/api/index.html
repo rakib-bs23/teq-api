@@ -64,6 +64,7 @@
 <script>
     $(document).ready(function () {
         var options = {
+            rememberLastLogin: true,
             prefill: {
                 email: "",
                 username: ""
@@ -91,6 +92,8 @@
                 update_name(profile);
                 localStorage.setItem('accessToken', authResult.accessToken);
                 localStorage.setItem('profile', JSON.stringify(profile));
+                console.log(authResult);
+                console.log(profile);
             });
         });
 

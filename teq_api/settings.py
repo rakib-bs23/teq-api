@@ -24,7 +24,7 @@ SECRET_KEY = 'f5y7)-hwvyl-zmj#k35f+u#up%7pw2c8rl#6nas$v)n5x4^fxl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','172.16.228.82','127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0', '172.16.228.82', '127.0.0.1']
 
 # Application definition
 
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'api.middleware.Auth0Middleware',
 ]
 
 REST_FRAMEWORK = {
@@ -81,23 +82,23 @@ WSGI_APPLICATION = 'teq_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'oslobuss_db',
-#         'USER': 'bs082',
-#         'PASSWORD': '123456',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'oslobuss_db',
+        'USER': 'bs082',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -134,3 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH0_DOMAIN = 'rakibul.auth0.com'
+API_AUDIENCE = 'https://rakibul.auth0.com/api/v2/'
+ALGORITHMS = ["RS256"]

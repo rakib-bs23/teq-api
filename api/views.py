@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import viewsets
 
@@ -10,6 +9,7 @@ from serializers import ItemsSerializer
 
 
 # Create your views here.
+
 def home(request):
     item_list = ObItem.objects.all()
     context = {'item_list': item_list}
